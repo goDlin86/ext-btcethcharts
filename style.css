@@ -1,0 +1,35 @@
+body {
+    font-size: 1em;
+    font-weight: bold;
+    color: #666;
+    margin: 20px;
+}
+
+.buttons {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 20px;
+}
+.buttons > div {
+    padding: 10px;
+    text-align: center;
+    border: 2px solid #666;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in;
+}
+.buttons > div:hover, .buttons > div.active {
+    background-color: rgba(200, 200, 200, 0.35);
+}
+.btcbutton {
+    grid-column: 1;
+    grid-row: 1;
+}
+.ethbutton {
+    grid-column: 2;
+    grid-row: 1;
+}
+.bebutton {
+    grid-column: 3;
+    grid-row: 1;
+}
