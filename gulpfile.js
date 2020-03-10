@@ -1,32 +1,35 @@
-var gulp = require('gulp'),
-    browserify = require('browserify'),
-    babelify = require('babelify'),
-    source = require('vinyl-source-stream'),
-    uglify = require('gulp-uglify'),
-    streamify = require('gulp-streamify')
+const { dest } = require('gulp')
+const browserify = require('browserify')
+const babelify = require('babelify')
+const source = require('vinyl-source-stream')
+const uglify = require('gulp-uglify')
+const streamify = require('gulp-streamify')
 
-gulp.task('default', function() {
+
+function js() {
     return browserify({
-          entries: 'src.js',
-          extensions: ['.js'],
-          debug: true
+            entries: 'src.js',
+            extensions: ['.js'],
+            debug: true
         })
         .transform(babelify, {presets: ['@babel/react', '@babel/env']})
         .bundle()
         .pipe(source('main.js'))
-        .pipe(gulp.dest('./'));
-})
+        .pipe(dest('./'))
+}
 
-gulp.task('production', function() {
-    process.env.NODE_ENV = 'production';
+function jsProd() {
     return browserify({
-          entries: 'src.js',
-          extensions: ['.js'],
-          debug: true
+            entries: 'src.js',
+            extensions: ['.js'],
+            debug: true
         })
         .transform(babelify, {presets: ['@babel/react', '@babel/env']})
         .bundle()
         .pipe(source('main.js'))
         .pipe(streamify(uglify()))
-        .pipe(gulp.dest('./'));
-})
+        .pipe(dest('./'))
+}
+
+exports.js = js
+exports.prod = jsProd
