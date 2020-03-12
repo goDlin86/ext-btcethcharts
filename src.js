@@ -66,7 +66,7 @@ const App = () => {
                         <XAxis dataKey="date"/>
                         <YAxis />
                         <CartesianGrid strokeDasharray="3 3"/>
-                        <Tooltip formatter={v => active > 0 ? v + '$' : v} />
+                        <Tooltip formatter={v => active !== 'be' ? v + '$' : v} />
                         <Legend />
                         <Line type="monotone" dataKey={active} stroke="#8884d8" />
                     </LineChart>
