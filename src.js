@@ -12,7 +12,7 @@ import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
 import { LineChart, XAxis, YAxis, Legend, Tooltip, Line, CartesianGrid } from 'recharts'
 
-import 'babel-polyfill'
+import '@babel/polyfill'
 
 const App = () => {
     const [store, setStore] = useState([])
