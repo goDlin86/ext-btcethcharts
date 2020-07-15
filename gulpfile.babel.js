@@ -8,12 +8,12 @@ import concat from 'gulp-concat'
 export default () => 
     src('src.js')
         .pipe(browserify({
-        //insertGlobals: true, 
-        debug: true,
-        transform: [babelify.configure({
-            presets: ['@babel/env', '@babel/react']
-            //sourceMaps: true
-        })]
+            //insertGlobals: true, 
+            debug: true,
+            transform: [babelify.configure({
+                presets: ['@babel/env', '@babel/react']
+                //sourceMaps: true
+            })]
         }))
         .pipe(concat('main.js'))
         .pipe(dest('.'))
@@ -25,8 +25,8 @@ export const jsProd = () =>
             //insertGlobals: true, 
             debug: false,
             transform: [babelify.configure({
-                presets: ['@babel/env', '@babel/react']
-                //sourceMaps: true
+                presets: ['@babel/env', '@babel/react'],
+                sourceMaps: true
             })]
         }))
         .pipe(concat('main.js'))

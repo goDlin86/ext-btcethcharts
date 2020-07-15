@@ -58,15 +58,21 @@ const App = () => {
         return parseFloat(data.amount).toFixed(2)
     }
 
+    const formatDate = date => {
+        const options = { month: 'long', day: 'numeric' }
+        return new Date(date).toLocaleDateString('ru-RU', options)
+    }
+
     return (
         <div>
             {store.length >= 30 &&
                 <div>
                     <LineChart width={600} height={300} data={store.slice()}>
-                        <XAxis dataKey="date"/>
+                        <XAxis dataKey="date" tickFormatter={formatDate}/>
                         <YAxis />
                         <CartesianGrid strokeDasharray="3 3"/>
-                        <Tooltip formatter={v => active !== 'be' ? v + '$' : v} />
+                        <Tooltip formatter={v => active !== 'be' ? v + '$' : v} 
+                            labelFormatter={formatDate} />
                         <Legend />
                         <Line type="monotone" dataKey={active} stroke="#8884d8" />
                     </LineChart>
