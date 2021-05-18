@@ -1,16 +1,20 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
   
     "name": "btc/eth",
     "description": "Show bitcoin/ethereum graphic",
-    "version": "1.0",
+    "version": "1.5",
 
-    "browser_action": {
+    "action": {
         "default_title": "Show graphic",
-        "default_popup": "popup.html"
+        "default_popup": "dist/popup.html"
     },
 
     "permissions": [
         "storage"
+    ],
+
+    "host_permissions": [
+        "https://api.coinbase.com/v2/prices/*"
     ]
 }
