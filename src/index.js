@@ -10,7 +10,7 @@ Date.prototype.yyyymmdd = function() {
 
 import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
-import { LineChart, XAxis, YAxis, Legend, Tooltip, Line, CartesianGrid } from 'recharts'
+import { Line } from 'react-chartjs-2'
 import './style.css'
 
 const App = () => {
@@ -61,20 +61,34 @@ const App = () => {
         const options = { month: 'long', day: 'numeric' }
         return new Date(date).toLocaleDateString('ru-RU', options)
     }
+     
+    const options = {
+        scales: {
+            y: {
+                beginAtZero: true,
+            },
+        },
+        parsing: {
+            yAxisKey: active,
+            xAxisKey: 'date',
+        },
+    }
 
     return (
         <div>
             {store.length >= 30 &&
                 <div>
-                    <LineChart width={600} height={300} data={store.slice()}>
-                        <XAxis dataKey="date" tickFormatter={formatDate}/>
-                        <YAxis />
-                        <CartesianGrid strokeDasharray="3 3"/>
-                        <Tooltip formatter={v => active !== 'be' ? v + '$' : v} 
-                            labelFormatter={formatDate} />
-                        <Legend />
-                        <Line type="monotone" dataKey={active} stroke="#8884d8" />
-                    </LineChart>
+                    <Line width={600} height={300} data={{
+                            datasets: [
+                                {
+                                    label: active,
+                                    data: store,
+                                    fill: false,
+                                    backgroundColor: 'rgb(10, 10, 10)',
+                                    borderColor: 'rgba(10, 10, 10, 0.2)',
+                                },
+                            ],
+                        }} options={options} />
                     <div className="buttons">
                         <div className={"btcbutton" + (active === 'btc' ? " active" : "")} onClick={() => setActive('btc')}>BTC</div>
                         <div className={"ethbutton" + (active === 'eth' ? " active" : "")} onClick={() => setActive('eth')}>ETH</div>
