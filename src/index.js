@@ -9,7 +9,7 @@ Date.prototype.yyyymmdd = function() {
 }
 
 import React, { useEffect, useState } from 'react'
-import ReactDOM from 'react-dom'
+import { render } from 'react-dom'
 import { Line } from 'react-chartjs-2'
 import './style.css'
 
@@ -84,15 +84,16 @@ const App = () => {
                                     label: active,
                                     data: store,
                                     fill: false,
-                                    backgroundColor: 'rgb(10, 10, 10)',
-                                    borderColor: 'rgba(10, 10, 10, 0.2)',
+                                    backgroundColor: 'rgb(50, 50, 50)',
+                                    borderColor: 'rgba(50, 50, 50, 0.2)',
                                 },
                             ],
-                        }} options={options} />
-                    <div className="buttons">
-                        <div className={"btcbutton" + (active === 'btc' ? " active" : "")} onClick={() => setActive('btc')}>BTC</div>
-                        <div className={"ethbutton" + (active === 'eth' ? " active" : "")} onClick={() => setActive('eth')}>ETH</div>
-                        <div className={"bebutton" + (active === 'be' ? " active" : "")} onClick={() => setActive('be')}>BTC/ETH</div>
+                        }} options={options} 
+                    />
+                    <div className='buttons'>
+                        <div className={'btcbutton' + (active === 'btc' ? ' active' : '')} onClick={() => setActive('btc')}>BTC</div>
+                        <div className={'ethbutton' + (active === 'eth' ? ' active' : '')} onClick={() => setActive('eth')}>ETH</div>
+                        <div className={'bebutton' + (active === 'be' ? ' active' : '')} onClick={() => setActive('be')}>BTC/ETH</div>
                     </div>
                 </div>
             }
@@ -101,4 +102,4 @@ const App = () => {
     )
 }
 
-ReactDOM.render(<App />, document.getElementById('graph'))
+render(<App />, document.getElementById('graph'))
