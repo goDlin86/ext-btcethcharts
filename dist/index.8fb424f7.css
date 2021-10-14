@@ -1,2 +1,2 @@
 body{color:#666;font-size:1em;font-weight:700;margin:20px}.buttons{grid-column-gap:20px;display:grid;grid-template-columns:1fr 1fr 1fr;margin-top:20px}.buttons>div{border:2px solid #666;cursor:pointer;padding:10px;text-align:center;transition:background-color .2s ease-in}.buttons>div.active,.buttons>div:hover{background-color:hsla(0,0%,78%,.35)}.btcbutton{grid-column:1;grid-row:1}.ethbutton{grid-column:2;grid-row:1}.bebutton{grid-column:3;grid-row:1}
-/*# sourceMappingURL=index.d4afe393.css.map */
+/*# sourceMappingURL=index.8fb424f7.css.map */
