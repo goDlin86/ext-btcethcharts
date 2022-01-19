@@ -10,6 +10,7 @@ Date.prototype.yyyymmdd = function() {
 
 import React, { useEffect, useState } from 'react'
 import { render } from 'react-dom'
+import 'chart.js/auto'
 import { Line } from 'react-chartjs-2'
 import './style.css'
 
@@ -64,7 +65,15 @@ const App = () => {
      
     const options = {
         scales: {
+            x: {
+                grid: {
+                    color: 'rgb(50, 50, 50)'
+                }
+            },
             y: {
+                grid: {
+                    color: 'rgb(50, 50, 50)'
+                },
                 beginAtZero: true,
             },
         },
@@ -84,8 +93,8 @@ const App = () => {
                                     label: active,
                                     data: store,
                                     fill: false,
-                                    backgroundColor: 'rgb(50, 50, 50)',
-                                    borderColor: 'rgba(50, 50, 50, 0.2)',
+                                    backgroundColor: 'rgb(220, 220, 220)',
+                                    borderColor: 'rgba(220, 220, 220, 0.2)',
                                 },
                             ],
                         }} options={options} 

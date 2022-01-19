@@ -1,8 +1,9 @@
 body {
     font-size: 1em;
     font-weight: bold;
-    color: #666;
+    color: #c9c9c9;
     margin: 20px;
+    background-color: #0f0f0d;
 }
 
 .buttons {
