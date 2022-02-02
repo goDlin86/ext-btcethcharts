@@ -8,10 +8,11 @@ Date.prototype.yyyymmdd = function() {
            ].join('-')
 }
 
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { render } from 'react-dom'
 import 'chart.js/auto'
 import { Line } from 'react-chartjs-2'
+import 'chartjs-adapter-luxon'
 import './style.css'
 
 const App = () => {
@@ -64,15 +65,49 @@ const App = () => {
     }
      
     const options = {
+        plugins: {
+            legend: {
+                display: false
+            },
+            tooltip: {
+                padding: 20,
+                displayColors: false,
+                callbacks: {
+                    title: function(context) {
+                        return context[0].label.substring(0, 14)
+                    },
+                    label: function(context) {
+                        let label = context.dataset.label || ''
+
+                        if (label === 'be')
+                            label = 'BTC/ETH: ' + context.parsed.y
+                        else {
+                            label = label.toUpperCase() +  ': '
+                        
+                            if (context.parsed.y !== null) {
+                                label += new Intl.NumberFormat('ru-RU', { style: 'currency', currency: 'USD' }).format(context.parsed.y)
+                            }
+                        }
+                        return label
+                    }
+                }
+            }
+        },
         scales: {
             x: {
+                type: 'time',
+                time: {
+                    unit: 'day'
+                    // Luxon format string
+                    //tooltipFormat: 'DD T'
+                },
                 grid: {
-                    color: 'rgb(50, 50, 50)'
+                    color: 'rgb(50, 50, 50)',
                 }
             },
             y: {
                 grid: {
-                    color: 'rgb(50, 50, 50)'
+                    color: 'rgb(50, 50, 50)',
                 },
                 beginAtZero: true,
             },
