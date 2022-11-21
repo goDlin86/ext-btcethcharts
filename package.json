@@ -3,8 +3,7 @@
   "version": "1.5",
   "description": "btc/eth graphic",
   "scripts": {
-    "clean": "rm -rf dist/",
-    "build": "parcel build ./src/index.html --public-url ./"
+    "build": "rm -rf dist/ && parcel build ./src/index.html --public-url ./"
   },
   "keywords": [
     "btc",
@@ -15,11 +14,12 @@
   "author": "goDlin",
   "license": "ISC",
   "dependencies": {
+    "chart.js": "^4.0.1",
     "chartjs-adapter-luxon": "^1.1.0",
-    "luxon": "^2.3.0",
-    "react": "^17.0.1",
-    "react-chartjs-2": "^4.0.1",
-    "react-dom": "^17.0.1"
+    "luxon": "^3.0.0",
+    "react": "^18.0.1",
+    "react-chartjs-2": "^5.0.0",
+    "react-dom": "^18.0.1"
   },
   "devDependencies": {
     "parcel": "^2.0.0"

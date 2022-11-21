@@ -10,10 +10,29 @@ Date.prototype.yyyymmdd = function() {
 
 import { useEffect, useState } from 'react'
 import { render } from 'react-dom'
-import 'chart.js/auto'
-import { Line } from 'react-chartjs-2'
+import {
+    Chart as ChartJS,
+    TimeScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend,
+} from 'chart.js'
+import { Line } from 'react-chartjs-2/dist'
 import 'chartjs-adapter-luxon'
 import './style.css'
+
+ChartJS.register(
+    TimeScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend
+)
 
 const App = () => {
     const [store, setStore] = useState([])
