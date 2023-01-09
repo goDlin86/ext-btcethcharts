@@ -16,7 +16,7 @@
   "dependencies": {
     "chart.js": "^4.0.1",
     "chartjs-adapter-luxon": "^1.1.0",
-    "luxon": "^3.0.0",
+    "luxon": "^3.2.1",
     "react": "^18.0.1",
     "react-chartjs-2": "^5.0.0",
     "react-dom": "^18.0.1"
