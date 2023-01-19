@@ -1,11 +1,11 @@
 Date.prototype.yyyymmdd = function() {
-    var mm = this.getMonth() + 1
-    var dd = this.getDate()
-  
-    return [this.getFullYear(),
-            (mm>9 ? '' : '0') + mm,
-            (dd>9 ? '' : '0') + dd
-           ].join('-')
+  var mm = this.getMonth() + 1
+  var dd = this.getDate()
+
+  return [this.getFullYear(),
+          (mm>9 ? '' : '0') + mm,
+          (dd>9 ? '' : '0') + dd
+          ].join('-')
 }
 
 import { useEffect, useState } from 'react'
@@ -13,71 +13,71 @@ import { render } from 'react-dom'
 import Chart from 'react-apexcharts'
 
 const lineChartOptionsTotalSpent = {
-    chart: {
-      toolbar: {
-        show: false,
-      },
-    },
-    colors: ["#4318FF", "#39B8FF"],
-    markers: {
-      size: 0,
-      colors: "white",
-      strokeColors: "#7551FF",
-      strokeWidth: 3,
-      strokeOpacity: 0.9,
-      strokeDashArray: 0,
-      fillOpacity: 1,
-      discrete: [],
-      shape: "circle",
-      radius: 2,
-      offsetX: 0,
-      offsetY: 0,
-      showNullDataPoints: true,
-    },
-    tooltip: {
-      theme: "dark",
-    },
-    dataLabels: {
-      enabled: false,
-    },
-    stroke: {
-      curve: "smooth",
-      type: "line",
-    },
-    xaxis: {
-      type: "datetime",
-      tickAmount: 6,
-      // axisBorder: {
-      //   show: false,
-      // },
-      // axisTicks: {
-      //   show: false,
-      // },
-    },
-    yaxis: {
-      min: 0,
-    },
-    legend: {
+  chart: {
+    toolbar: {
       show: false,
     },
-    grid: {
-      show: false,
-      column: {
-        color: ["#7551FF", "#39B8FF"],
-        opacity: 0.5,
-      },
+  },
+  colors: ["#4318FF", "#39B8FF"],
+  markers: {
+    size: 0,
+    colors: "white",
+    strokeColors: "#7551FF",
+    strokeWidth: 3,
+    strokeOpacity: 0.9,
+    strokeDashArray: 0,
+    fillOpacity: 1,
+    discrete: [],
+    shape: "circle",
+    radius: 2,
+    offsetX: 0,
+    offsetY: 0,
+    showNullDataPoints: true,
+  },
+  tooltip: {
+    theme: "dark",
+  },
+  dataLabels: {
+    enabled: false,
+  },
+  stroke: {
+    curve: "smooth",
+    type: "line",
+  },
+  xaxis: {
+    type: "datetime",
+    tickAmount: 6,
+    // axisBorder: {
+    //   show: false,
+    // },
+    // axisTicks: {
+    //   show: false,
+    // },
+  },
+  yaxis: {
+    min: 0,
+  },
+  legend: {
+    show: false,
+  },
+  grid: {
+    show: false,
+    column: {
+      color: ["#7551FF", "#39B8FF"],
+      opacity: 0.5,
     },
-    color: ["#7551FF", "#39B8FF"],
-    fill: {
-      type: 'gradient',
-      gradient: {
-        shade: "dark",
-        shadeIntensity: 1,
-        opacityFrom: 0.7,
-        opacityTo: 0.9,
-        stops: [0, 100]
-      }
-    },
+  },
+  color: ["#7551FF", "#39B8FF"],
+  fill: {
+    type: 'gradient',
+    gradient: {
+      shade: "dark",
+      shadeIntensity: 1,
+      opacityFrom: 0.7,
+      opacityTo: 0.9,
+      stops: [0, 100]
+    }
+  },
 }
 
 const App = () => {
