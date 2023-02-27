@@ -12,8 +12,12 @@ import { useEffect, useState } from 'react'
 import { render } from 'react-dom'
 import Chart from 'react-apexcharts'
 
-const lineChartOptionsTotalSpent = {
+const chartOptions = {
   chart: {
+    fontFamily: 'system-ui, sans-serif',
+    animations: {
+      speed: 4000,
+    },
     toolbar: {
       show: false,
     },
@@ -36,6 +40,11 @@ const lineChartOptionsTotalSpent = {
   },
   tooltip: {
     theme: "dark",
+    y: {
+      formatter: function(value, { w }) {
+        return w.config.series[0].name === 'be' ? value : value + '$'
+      }
+    }
   },
   dataLabels: {
     enabled: false,
@@ -56,6 +65,9 @@ const lineChartOptionsTotalSpent = {
   },
   yaxis: {
     min: 0,
+    labels: {
+      minWidth: 55,
+    }
   },
   legend: {
     show: false,
@@ -124,13 +136,13 @@ const App = () => {
 
   return (
     <>
-      <Chart 
-        options={lineChartOptionsTotalSpent} 
-        series={store.length > 0 ? 
-          [{ name: active, data: store.map(i => [new Date(i.date).getTime(), i[active]]) }] 
-          : [{ data: [] }]} 
-        type='area' 
-      />
+      {store.length < 60 ? '...' :
+        <Chart 
+          options={chartOptions} 
+          series={[{ name: active, data: store.map(i => [new Date(i.date).getTime(), i[active]]) }]} 
+          type='area' 
+        />
+      }
       <div className='buttons'>
         <div className={'btcbutton' + (active === 'btc' ? ' active' : '')} onClick={() => setActive('btc')}>BTC</div>
         <div className={'ethbutton' + (active === 'eth' ? ' active' : '')} onClick={() => setActive('eth')}>ETH</div>
