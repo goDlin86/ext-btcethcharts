@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
     font-size: 1em;
     font-weight: bold;
@@ -8,10 +12,10 @@ body {
 }
 
 .buttons {
-    margin-top: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-column-gap: 20px;
+    margin-top: 10px;
 }
 .buttons > div {
     position: relative;
