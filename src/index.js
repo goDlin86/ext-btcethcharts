@@ -54,9 +54,8 @@ const App = () => {
   }, [])
 
   const dataFormatter = (number) => {
-    return "$ " + Intl.NumberFormat("us").format(number).toString();
+    return "$ " + Intl.NumberFormat("us").format(number).toString()
   }
-
   const beFormatter = (number) => number
 
   return (
