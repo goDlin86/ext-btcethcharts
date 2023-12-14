@@ -10,11 +10,12 @@ Date.prototype.yyyymmdd = function() {
 
 import { useEffect, useState } from 'react'
 import { render } from 'react-dom'
-import { AreaChart, Button } from "@tremor/react"
+import { AreaChart, Button } from '@tremor/react'
+import dayjs from 'dayjs'
 
 const App = () => {
   const [store, setStore] = useState([])
-  const [active, setActive] = useState('be')
+  const [active, setActive] = useState('btc')
 
   useEffect(() => {
     //chrome.storage.sync.clear()
@@ -49,12 +50,15 @@ const App = () => {
       }
 
       chrome.storage.sync.set({ 'data': st })
-      setStore(st)
+      setStore(st.map(i => {
+        i.date = dayjs(i.date).format('MMM D')
+        return i
+      }))
     })
   }, [])
 
   const dataFormatter = (number) => {
-    return "$ " + Intl.NumberFormat("us").format(number).toString()
+    return '$ ' + new Intl.NumberFormat('us').format(number).toString()
   }
   const beFormatter = (number) => number
 
@@ -66,6 +70,7 @@ const App = () => {
           index='date'
           categories={[active]}
           showLegend={false}
+          showAnimation={true}
           curveType='natural'
           valueFormatter={active === 'be' ? beFormatter : dataFormatter}
         />
